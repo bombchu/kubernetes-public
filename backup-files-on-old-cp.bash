@@ -17,7 +17,7 @@ S3_BUCKET="s3://aa-dd-andrew-thomas"
 
 # Create the archive
 echo "Creating backup archive..."
-tar -cjf "$BACKUP_FILENAME" $BACKUP_DIRS
+tar -czf "$BACKUP_FILENAME" $BACKUP_DIRS
 
 # Check if the archive was created successfully
 if [ $? -ne 0 ]; then

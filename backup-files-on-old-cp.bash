@@ -9,6 +9,10 @@ if ! aws --version; then
     sudo ./aws/install || rm -fr aws && unzip awscliv2aa.zip && sudo ./aws/install --update
 fi
 
+sudo rm -fv awscliv2.zip
+sudo rm -fv awscliv2aa.zip
+sudo rm -fr aws
+
 # Variables
 BACKUP_DATE=$(date +"%Y-%m-%d")
 SEMI_UUID=$(uptime | cut -c2-9 | base64)

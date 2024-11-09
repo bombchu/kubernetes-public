@@ -11,7 +11,8 @@ fi
 
 # Variables
 BACKUP_DATE=$(date +"%Y-%m-%d")
-BACKUP_FILENAME="backup-$BACKUP_DATE.tar.bz2"
+SEMI_UUID=$(uptime | cut -c2-9 | base64)
+BACKUP_FILENAME="backup-${BACKUP_DATE}_${SEMI_UUID}.tar.bz2"
 BACKUP_DIRS="/etc /home /root"
 S3_BUCKET="s3://aa-dd-andrew-thomas"
 

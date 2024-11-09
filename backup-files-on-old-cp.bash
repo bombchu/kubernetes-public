@@ -18,7 +18,7 @@ S3_BUCKET="s3://aa-dd-andrew-thomas"
 
 # Create the archive
 echo "Creating backup archive..."
-tar -czf "$BACKUP_FILENAME" $BACKUP_DIRS
+sudo tar -czf "$BACKUP_FILENAME" --exclude="backup-20*.tgz" $BACKUP_DIRS
 
 # Check if the archive was created successfully
 if [ $? -ne 0 ]; then
@@ -27,6 +27,8 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Backup archive created: $BACKUP_FILENAME"
+
+sudo chmod 444 $BACKUP_FILENAME
 
 # Upload the archive to S3
 echo "Uploading backup to S3 bucket $S3_BUCKET..."
@@ -40,8 +42,4 @@ fi
 
 echo "Backup successfully uploaded to $S3_BUCKET"
 
-# Optionally, remove the local backup file after successful upload
-# Uncomment the following line if you want to delete the local backup
 # rm "$BACKUP_FILENAME"
-
-echo "Backup process completed successfully."
